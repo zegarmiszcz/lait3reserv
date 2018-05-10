@@ -7,7 +7,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class Init {
 
 	static WebDriver driver = null;
-
+	//dasd
 	public static WebDriver getDriver() {
 		// System.setProperty("webdriver.gecko.driver", "C:\\work\\geckodriver.exe");
 
