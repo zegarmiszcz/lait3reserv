@@ -24,6 +24,10 @@ public class LoginPageStepDefs extends Init {
 	public void i_click_on_the_SIGN_ON_link() throws Throwable {
 		driver.findElement(By.linkText("SIGN-ON")).click();
 	}
+	@When("^I click on the \"([^\"]*)\" link$")
+	public void i_click_on_the_link(String arg1) throws Throwable {
+		  driver.findElement(By.linkText(arg1)).click();
+	}
 	@Then("^system is on SIGN-ON page$")
 	public void system_is_on_SIGN_ON_page() throws Throwable {
 		String title;
@@ -33,7 +37,7 @@ public class LoginPageStepDefs extends Init {
 	}
 	
 	@After
-	public void end() {
+	public void finishTest() {
 		endTest();
 	}
 }
