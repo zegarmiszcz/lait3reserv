@@ -40,6 +40,8 @@ public class ReservationTest {
 		reserv2Page.returnRadioClick();
 		reserv2Page.continueButtonClick();
 		Init.sleep(5);
+		
+		Init.printScr(driver);
 	}	
 	@After
 	public void tearDown() {
