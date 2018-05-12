@@ -3,6 +3,8 @@ package pl.lait.Przychodnia2;
 import java.util.concurrent.TimeUnit;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.Timestamp;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -10,19 +12,28 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.Augmenter;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class Init {
 
 	static WebDriver driver = null;
+	
+	static DesiredCapabilities cap = DesiredCapabilities.firefox();
 	//dasd
 	public static WebDriver getDriver() {
-		// System.setProperty("webdriver.gecko.driver", "C:\\work\\geckodriver.exe");
-
+		System.setProperty("webdriver.gecko.driver", "C:\\work\\geckodriver.exe");
+		log("Wewnatrz metody getDriver");
 		if (driver == null) {
-			Init.log("Uruchamiam przegladarke Firefox");
-			System.setProperty("webdriver.gecko.driver", "C:\\work\\geckodriver.exe");
-			//System.out.println("Wewnatrz metody getDriver");
-			driver = new FirefoxDriver();
+			log("Wewnatrz Ifa, FF jest uruchomiony");
+			URL seleniumAdress = null ;
+			try {
+				seleniumAdress = new URL("http://localhost:4444/wd/hub");
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			driver = new RemoteWebDriver(seleniumAdress, cap);
 			driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 			Init.log("Wchodzę na strone http://newtours.demoaut.com" );
 			driver.get("http://newtours.demoaut.com");

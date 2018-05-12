@@ -36,6 +36,18 @@ public class LoginPageStepDefs extends Init {
 		printScr(driver);
 	}
 	
+	@When("^I login as \"([^\"]*)\" with passowrd \"([^\"]*)\"$")
+	public void i_login_as_with_passowrd(String arg1, String arg2) throws Throwable {
+	    loginPage = new LoginPage();
+	    loginPage.login(arg1, arg2);
+	    printScr(driver);
+	}
+
+	@Then("^user is logged in$")
+	public void user_is_logged_in() throws Throwable {
+	   printScr(driver);
+	   //TODO sprawdzic asercja czy aby napewno jestem na dobrej stornie
+	}
 	@After
 	public void finishTest() {
 		endTest();
