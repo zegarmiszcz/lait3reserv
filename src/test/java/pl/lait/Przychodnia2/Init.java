@@ -22,13 +22,13 @@ public class Init {
 	static DesiredCapabilities cap = DesiredCapabilities.firefox();
 	//dasd
 	public static WebDriver getDriver() {
-		System.setProperty("webdriver.gecko.driver", "C:\\work\\geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver", "C:\\Users\\John\\Desktop\\geckodriver.exe");
 		log("Wewnatrz metody getDriver");
 		if (driver == null) {
 			log("Wewnatrz Ifa, FF jest uruchomiony");
 			URL seleniumAdress = null ;
 			try {
-				seleniumAdress = new URL("http://192.168.0.109:4444/wd/hub");
+				seleniumAdress = new URL("http://192.168.0.100:4444/wd/hub");
 			} catch (MalformedURLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
